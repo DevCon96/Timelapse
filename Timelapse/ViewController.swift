@@ -6,11 +6,13 @@
 //
 
 import Cocoa
+import CoreGraphics
 
 class ViewController: NSViewController {
     @IBOutlet weak var imageView: NSImageView!
     @IBOutlet weak var timeSlider: NSSlider!
     
+    // All is driven by this array. More imagaes go here.
     let images: [NSImage] = [
         NSImage(named: "image0")!,
         NSImage(named: "image1")!,
@@ -28,7 +30,7 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSlider()
-        imageView.image = images[3]
+        imageView.image = images[Int(timeSlider.floatValue)]
     }
 
     override var representedObject: Any? {
@@ -39,18 +41,19 @@ class ViewController: NSViewController {
 
     @IBAction func timeSliderDidChange(_ sender: NSSlider) {
         let sliderValue = Int(timeSlider.floatValue)
-        let index = convertValueToIndex(sliderValue, intervals: numberOfImages)
-        imageView.image = images[Int(index)]
-    }
-    
-    private func convertValueToIndex(_ value: Int, intervals: Int) -> Float {
-        return (Float(value) / 100) / (1 / Float(intervals))
+        print("sliderValue = \(sliderValue)")
+        guard sliderValue < numberOfImages else {
+            imageView.image = images[numberOfImages - 1]
+            return }
+        imageView.image = images[Int(sliderValue)]
     }
     
     private func setupSlider() {
         timeSlider.trackFillColor = NSColor.orange
         timeSlider.sliderType = .linear
-//        timeSlider.t
+        timeSlider.minValue = 0
+        timeSlider.maxValue = Double(numberOfImages)
+        timeSlider.numberOfTickMarks = numberOfImages
     }
 
 }

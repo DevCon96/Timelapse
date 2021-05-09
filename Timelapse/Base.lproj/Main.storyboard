@@ -716,7 +716,7 @@
                             </imageView>
                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zbj-5O-gKS">
                                 <rect key="frame" x="18" y="14" width="444" height="28"/>
-                                <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" numberOfTickMarks="7" sliderType="linear" id="t1e-no-N8e"/>
+                                <sliderCell key="cell" alignment="left" maxValue="20" tickMarkPosition="above" numberOfTickMarks="20" sliderType="linear" id="t1e-no-N8e"/>
                                 <connections>
                                     <action selector="timeSliderDidChange:" target="XfG-lQ-9wD" id="Pg5-JQ-cEH"/>
                                 </connections>
