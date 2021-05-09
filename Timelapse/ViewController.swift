@@ -44,7 +44,9 @@ class ViewController: NSViewController {
         print("sliderValue = \(sliderValue)")
         guard sliderValue < numberOfImages else {
             imageView.image = images[numberOfImages - 1]
-            return }
+            return
+        }
+        
         imageView.image = images[Int(sliderValue)]
     }
     
